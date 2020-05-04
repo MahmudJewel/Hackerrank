@@ -1,0 +1,178 @@
+# i) Lists
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+'*****************************   Jewel Mahmud   *****************************'
+'*****************************  CSE-13th,MBSTU  *****************************'
+'***************************** Date: 04-05-2020 *****************************'
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+#problem name: Lists
+#problem link: https://www.hackerrank.com/challenges/python-lists/problem
+
+
+'''''''''
+#solve 1
+#ok
+my_List=[]
+for i in range(int(input())):
+    temp=input().split()
+    temp2 = list(map(int, temp[1:]))
+    if(temp[0]=='insert'):
+        my_List.insert(temp2[0],temp2[1])
+    elif(temp[0]=='append'):
+        my_List.append(temp2[0])
+    elif(temp[0]=='remove'):
+        my_List.remove(temp2[0])
+    elif(temp[0]=='sort'):
+        my_List.sort()
+    elif(temp[0]=='reverse'):
+        my_List.reverse()
+    elif(temp[0]=='pop'):
+        my_List.pop()
+    else:
+        print(my_List)
+'''
+
+#solve 2
+n = int(input())
+l = []
+for _ in range(n):
+    s =input().split()
+    cmd = s[0]
+    args = s[1:]
+    if cmd !="print":
+        cmd += "("+ ",".join(args) +")"
+        eval("l."+cmd)
+
+    else:
+        print (l)
+
+
+#ii) List Comprehensions
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+'*****************************   Jewel Mahmud   *****************************'
+'*****************************  CSE-13th,MBSTU  *****************************'
+'***************************** Date: 22-04-2020 *****************************'
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+#problem name: List Comprehensions
+#problem link: https://www.hackerrank.com/challenges/list-comprehensions/problem
+
+if __name__ == '__main__':
+    x = int(input())
+    y = int(input())
+    z = int(input())
+    n = int(input())
+
+    #ar=[[a,b,c] for a in range(0,x+1) for b in range(0,y+1) for c in range(0,z+1) if a+b+c!=n ]
+    #print(ar)
+
+    ab=[[],[],[]]
+    for i in range(0,x+1):
+        for j in range(0,y+1):
+            for k in range(0,z+1):
+                if(i+j+k!=n):
+                    print()
+
+    print(ab)
+
+#iii) Find the Runner-Up Score!
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+'*****************************   Jewel Mahmud   *****************************'
+'*****************************  CSE-13th,MBSTU  *****************************'
+'***************************** Date: 27-04-2020 *****************************'
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+#problem name: Find the Runner-Up Score!
+#problem link: https://www.hackerrank.com/challenges/find-second-maximum-number-in-a-list/problem
+
+
+def runner(array,n):
+    array.sort()
+    for i in range(n-1,-1,-1):
+        if(i==0):
+            return array[i]
+        if(array[i]!=array[i-1]):
+            return array[i-1]
+
+    return 0
+
+if __name__ == '__main__':
+    n = int(input())
+    arr = map(int, input().split())
+    arr=list(arr)
+    result = runner(arr,n)
+    print( result )
+
+#iv)Finding the percentage
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+'*****************************   Jewel Mahmud   *****************************'
+'*****************************  CSE-13th,MBSTU  *****************************'
+'***************************** Date: 01-05-2020 *****************************'
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+#problem name: Finding the percentage
+#problem link: https://www.hackerrank.com/challenges/finding-the-percentage/problem
+
+if __name__ == '__main__':
+    student_marks = {}
+    for _ in range(int(input())):
+        name, *line = input().split()
+        student_marks[name] = list(map(float, line))
+    print("%.2f" % (sum(student_marks[input()]) / 3))
+
+
+#v) Nested Lists
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+'*****************************   Jewel Mahmud   *****************************'
+'*****************************  CSE-13th,MBSTU  *****************************'
+'***************************** Date: 02-05-2020 *****************************'
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+#problem name: Nested Lists
+#problem link: https: https://www.hackerrank.com/challenges/nested-list/problem
+
+'''''''''
+#solve 1
+#it's ok
+if __name__ == '__main__':
+    array=[]
+    for _ in range(int(input())):  #input
+        name = input()
+        score = float(input())
+        array.append([name,score])
+
+    array.sort(key=lambda x:x[1])  #short array according to second row
+    l=len(array)
+    temp=0
+    for temp in range(l-1):        #smallest value index
+        if(array[temp][1]!=array[temp+1][1]):
+            break
+
+    final=[]
+    final.append(array[temp+1][0]) #one second smallest value
+    for i in range(temp+2,l):      # all second smallest value
+        if(array[i][1]==array[i-1][1]):
+            final.append(array[i][0])
+        else:
+            break
+    final.sort()
+    for i in range(len(final)):
+        print(final[i])
+'''
+
+#solve 2
+if __name__ == '__main__':
+        marksheet=[[input(),float(input())] for _ in range(int(input()))]
+        second=sorted(list(set([b for a,b in marksheet])))[1]
+        print('\n'.join([a for a, b in sorted(marksheet) if b == second]))
+
+
+
+# vi) Tuples
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+'*****************************   Jewel Mahmud   *****************************'
+'*****************************  CSE-13th,MBSTU  *****************************'
+'***************************** Date: 04-05-2020 *****************************'
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+#problem name: Tuples
+#problem link: https://www.hackerrank.com/challenges/python-tuples/problem
+
+
+n=int(input())
+t=list(map(int,input().split()))
+print(hash(tuple(t)))
